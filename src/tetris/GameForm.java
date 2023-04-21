@@ -5,10 +5,19 @@ package tetris;
  * @author Sonia Juanino Vega
  */
 public class GameForm extends javax.swing.JFrame {
-
+    
+    private GameArea gameArea;
+    
     public GameForm() {
         initComponents();
-        this.add(new GameArea(this.gameAreaPlaceHolder, 10));
+        gameArea = new GameArea(this.gameAreaPlaceHolder, 10);
+        this.add(gameArea);
+        startGame();
+    }
+    
+   
+    public void startGame() {
+        new GameThread(gameArea).start();
     }
 
     /**
@@ -23,7 +32,7 @@ public class GameForm extends javax.swing.JFrame {
         gameAreaPlaceHolder = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 310));
+        setPreferredSize(new java.awt.Dimension(500, 350));
         setResizable(false);
 
         gameAreaPlaceHolder.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -37,7 +46,7 @@ public class GameForm extends javax.swing.JFrame {
         );
         gameAreaPlaceHolderLayout.setVerticalGroup(
             gameAreaPlaceHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 298, Short.MAX_VALUE)
+            .addGap(0, 305, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -51,7 +60,7 @@ public class GameForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(gameAreaPlaceHolder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(gameAreaPlaceHolder, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
         );
 
         pack();
